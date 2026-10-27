@@ -7,7 +7,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
-// Semua route memanggil method controller (tanpa function di dalam route)
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/tentang', [AboutController::class, 'index'])->name('about');
 Route::get('/produk', [ProductController::class, 'index'])->name('products.index');
