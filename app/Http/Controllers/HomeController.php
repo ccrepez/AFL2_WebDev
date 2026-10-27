@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advantage;
+use App\Models\BusinessProfile;
+use App\Models\Product;
+
 class HomeController extends Controller
 {
     public function index()
     {
-        // Nanti: ambil produk unggulan, keunggulan, dan foto galeri lewat Model
-        return view('home');
+        $profile = BusinessProfile::first();
+        $products = Product::all();
+        $advantages = Advantage::all();
+
+        return view('home', [
+            'profile' => $profile,
+            'products' => $products,
+            'advantages' => $advantages,
+        ]);
     }
 }

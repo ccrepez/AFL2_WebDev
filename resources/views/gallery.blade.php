@@ -1,24 +1,16 @@
 @extends('layouts.app')
+
 @section('title', 'Galeri')
 
 @section('content')
     <h1>Galeri</h1>
 
-    <section>
-        <h2>1. Filter Kategori</h2>
-        <div class="box">[Semua] [Produk] [Bahan] [Proses] — filter pakai JavaScript, bukan input ke server</div>
-    </section>
-
-    <section>
-        <h2>2. Grid Foto</h2>
-        <div class="grid">
-            <div class="box">[Foto + keterangan]</div>
-            <div class="box">[Foto + keterangan]</div>
-            <div class="box">[Foto + keterangan]</div>
-            <div class="box">[Foto + keterangan]</div>
-            <div class="box">[Foto + keterangan]</div>
-            <div class="box">[Foto + keterangan]</div>
-        </div>
-        <p class="note">Data: tabel galleries</p>
-    </section>
+    <div class="gallery">
+        @foreach ($galleries as $gallery)
+            <div class="gallery-item">
+                <img src="/{{ $gallery->image }}" alt="{{ $gallery->title }}">
+                <p>{{ $gallery->title }}</p>
+            </div>
+        @endforeach
+    </div>
 @endsection

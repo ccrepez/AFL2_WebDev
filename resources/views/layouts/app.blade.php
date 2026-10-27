@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title') | Dwija</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <title>@yield('title') - Dwija</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    @include('partials.navbar')
+    <nav class="navbar">
+        <a href="/">Beranda</a>
+        <a href="/tentang">Tentang</a>
+        <a href="/produk">Produk</a>
+        <a href="/galeri">Galeri</a>
+        <a href="/kontak">Kontak</a>
+    </nav>
 
     <main class="container">
         @yield('content')
     </main>
 
-    @include('partials.footer')
-
-    <a href="#" class="wa-float">WA</a>
+    <footer class="footer">
+        <p>{{ $profile->name }} | WhatsApp {{ $profile->whatsapp }} | Instagram {{ $profile->instagram }}</p>
+    </footer>
 </body>
 </html>

@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\ProductFlavor;
 use Illuminate\Database\Seeder;
 
 class ProductFlavorSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        //
+        // Soya Milk (product_id 1)
+        ProductFlavor::create(['product_id' => 1, 'name' => 'Original']);
+        ProductFlavor::create(['product_id' => 1, 'name' => 'Strawberry']);
+        ProductFlavor::create(['product_id' => 1, 'name' => 'Chocolate']);
     }
 }

@@ -1,21 +1,18 @@
 @extends('layouts.app')
+
 @section('title', 'Produk')
 
 @section('content')
-    <h1>Menu Minuman</h1>
+    <h1>Produk</h1>
 
-    <section>
-        <h2>Daftar Produk</h2>
-        <div class="grid">
-            <div class="box">
-                [Foto produk]<br>
-                [Nama + tagline]<br>
-                [Small / Medium / Large + harga]<br>
-                <a href="{{ route('products.show', 'contoh-produk') }}">Lihat Detail</a>
+    @foreach ($products as $product)
+        <div class="product">
+            <img src="/{{ $product->image }}" alt="{{ $product->name }}">
+            <div>
+                <h2>{{ $product->name }}</h2>
+                <p>{{ $product->tagline }}</p>
+                <a href="/produk/{{ $product->slug }}">Lihat detail</a>
             </div>
-            <div class="box">[Kartu produk kedua]</div>
-            <div class="box">[Kartu produk ketiga]</div>
         </div>
-        <p class="note">Data: tabel products + product_sizes (diulang dengan @foreach)</p>
-    </section>
+    @endforeach
 @endsection

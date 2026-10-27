@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advantage;
+use App\Models\BusinessProfile;
+
 class AboutController extends Controller
 {
     public function index()
     {
-        // Nanti: ambil profil usaha dan keunggulan lewat Model
-        return view('about');
+        $profile = BusinessProfile::first();
+        $advantages = Advantage::all();
+
+        return view('about', [
+            'profile' => $profile,
+            'advantages' => $advantages,
+        ]);
     }
 }

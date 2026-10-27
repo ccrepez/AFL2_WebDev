@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BusinessProfile;
+use App\Models\Gallery;
+
 class GalleryController extends Controller
 {
     public function index()
     {
-        // Nanti: ambil semua foto + daftar kategori lewat Model
-        return view('gallery');
+        $profile = BusinessProfile::first();
+        $galleries = Gallery::all();
+
+        return view('gallery', [
+            'profile' => $profile,
+            'galleries' => $galleries,
+        ]);
     }
 }

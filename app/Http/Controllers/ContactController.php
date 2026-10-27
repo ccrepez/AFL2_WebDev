@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BusinessProfile;
+use App\Models\OrderStep;
+
 class ContactController extends Controller
 {
     public function index()
     {
-        // Nanti: ambil langkah cara pesan dan info kontak lewat Model
-        return view('contact');
+        $profile = BusinessProfile::first();
+        $steps = OrderStep::all();
+
+        return view('contact', [
+            'profile' => $profile,
+            'steps' => $steps,
+        ]);
     }
 }
