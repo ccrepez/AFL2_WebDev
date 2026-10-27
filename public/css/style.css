@@ -1,0 +1,55 @@
+/* CSS dasar untuk kerangka (wireframe), nanti diganti desain asli */
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f6ebdd;
+    color: #5a3a24;
+}
+
+.container { max-width: 1000px; margin: 0 auto; padding: 16px; }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 12px 16px;
+    background: #5a3a24;
+}
+.navbar a { color: #fff; text-decoration: none; }
+.navbar ul { display: flex; gap: 16px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+
+section { margin-bottom: 32px; }
+
+.box {
+    border: 2px dashed #b08a6a;
+    background: #fffaf3;
+    padding: 16px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+}
+.box.big { min-height: 200px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.grid.two { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+.note { font-size: 13px; color: #8a6a50; font-style: italic; }
+
+table { width: 100%; border-collapse: collapse; background: #fffaf3; }
+th, td { border: 1px solid #b08a6a; padding: 8px; text-align: left; }
+
+.footer { background: #5a3a24; color: #fff; padding: 16px; }
+.footer .box { background: transparent; color: #fff; }
+
+.wa-float {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    background: #25d366;
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 50px;
+    text-decoration: none;
+}
