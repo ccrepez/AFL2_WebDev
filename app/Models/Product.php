@@ -3,20 +3,41 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'slug', 'tagline', 'description', 'image'];
+    protected $guarded = [];
 
-    // 1 produk punya banyak ukuran
-    public function sizes()
+    protected $casts = [
+        'is_featured' => 'boolean',
+    ];
+
+    public function sizes(): HasMany
     {
-        return $this->hasMany(ProductSize::class);
+        return $this->hasMany(ProductSize::class)->orderBy('volume_ml');
     }
 
-    // 1 produk punya banyak rasa
-    public function flavors()
+    public function flavors(): HasMany
     {
         return $this->hasMany(ProductFlavor::class);
+    }
+
+    public function galleries(): HasMany
+    {
+        return $this->hasMany(Gallery::class);
+    }
+
+    // Harga ukuran termurah, contoh "Rp10.000"
+    public function getStartingPriceAttribute(): ?string
+    {
+        $min = $this->sizes->min('price');
+
+        return $min ? 'Rp' . number_format($min, 0, ',', '.') : null;
+    }
+
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('sort_order');
     }
 }

@@ -6,5 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class BusinessProfile extends Model
 {
-    protected $fillable = ['name', 'tagline', 'description', 'owner_name', 'whatsapp', 'whatsapp_link', 'instagram'];
+    protected $guarded = [];
+
+    public function whatsappUrl(?string $message = null): string
+    {
+        $url = 'https://wa.me/' . $this->whatsapp;
+
+        return $message ? $url . '?text=' . rawurlencode($message) : $url;
+    }
+
+    public function getInstagramUrlAttribute(): string
+    {
+        return 'https://instagram.com/' . $this->instagram;
+    }
 }
