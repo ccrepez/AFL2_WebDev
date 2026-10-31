@@ -2,16 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\ProductFlavor;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 
 class ProductFlavorSeeder extends Seeder
 {
     public function run(): void
     {
-        // Soya Milk (product_id 1)
-        ProductFlavor::create(['product_id' => 1, 'name' => 'Original']);
-        ProductFlavor::create(['product_id' => 1, 'name' => 'Strawberry']);
-        ProductFlavor::create(['product_id' => 1, 'name' => 'Chocolate']);
+        $soya = Product::where('slug', 'soya-milk')->firstOrFail();
+
+        foreach (['Original', 'Strawberry', 'Chocolate'] as $flavor) {
+            $soya->flavors()->create(['name' => $flavor]);
+        }
     }
 }

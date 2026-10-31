@@ -28,7 +28,6 @@ class Product extends Model
         return $this->hasMany(Gallery::class);
     }
 
-    // Harga ukuran termurah, contoh "Rp10.000"
     public function getStartingPriceAttribute(): ?string
     {
         $min = $this->sizes->min('price');

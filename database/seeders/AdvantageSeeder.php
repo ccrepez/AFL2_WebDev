@@ -9,9 +9,15 @@ class AdvantageSeeder extends Seeder
 {
     public function run(): void
     {
-        Advantage::create(['title' => 'Tanpa pengawet', 'description' => 'Dibuat untuk diminum segar.']);
-        Advantage::create(['title' => 'Bahan pilihan berkualitas', 'description' => 'Bahan dipilih sendiri sebelum diolah.']);
-        Advantage::create(['title' => 'Diolah dengan cinta dan higienis', 'description' => 'Dibuat di dapur rumah yang dijaga kebersihannya.']);
-        Advantage::create(['title' => 'Nikmat, sehat, dan menyegarkan', 'description' => 'Enak diminum dingin kapan saja.']);
+        $advantages = [
+            ['title' => 'Tanpa pengawet', 'description' => 'Dibuat untuk diminum segar, bukan disimpan berbulan-bulan.'],
+            ['title' => 'Bahan pilihan', 'description' => 'Kacang dan bahan lain dipilih sendiri sebelum diolah.'],
+            ['title' => 'Diolah dengan higienis', 'description' => 'Dimasak dan dibotolkan di dapur rumah yang dijaga kebersihannya.'],
+            ['title' => 'Nikmat dan menyegarkan', 'description' => 'Enak diminum dingin kapan saja.'],
+        ];
+
+        foreach ($advantages as $i => $advantage) {
+            Advantage::create($advantage + ['sort_order' => $i + 1]);
+        }
     }
 }

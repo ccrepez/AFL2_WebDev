@@ -2,24 +2,35 @@
 
 namespace Database\Seeders;
 
-use App\Models\ProductSize;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 
 class ProductSizeSeeder extends Seeder
 {
     public function run(): void
     {
-        // Soya Milk (product_id 1)
-        ProductSize::create(['product_id' => 1, 'size' => 'Small', 'volume' => 250, 'price' => 10000]);
-        ProductSize::create(['product_id' => 1, 'size' => 'Medium', 'volume' => 500, 'price' => 18000]);
-        ProductSize::create(['product_id' => 1, 'size' => 'Large', 'volume' => 1000, 'price' => 35000]);
+        $sizes = [
+            'soya-milk' => [
+                ['label' => 'Small', 'volume_ml' => 250, 'price' => 10000],
+                ['label' => 'Medium', 'volume_ml' => 500, 'price' => 18000],
+                ['label' => 'Large', 'volume_ml' => 1000, 'price' => 35000],
+            ],
+            'aluna' => [
+                ['label' => 'Small', 'volume_ml' => 250, 'price' => 12000],
+                ['label' => 'Medium', 'volume_ml' => 500, 'price' => 22000],
+                ['label' => 'Large', 'volume_ml' => 1000, 'price' => 44000],
+            ],
+            'jemi' => [
+                ['label' => 'Large', 'volume_ml' => 1000, 'price' => 60000],
+            ],
+        ];
 
-        // Aluna (product_id 2)
-        ProductSize::create(['product_id' => 2, 'size' => 'Small', 'volume' => 250, 'price' => 12000]);
-        ProductSize::create(['product_id' => 2, 'size' => 'Medium', 'volume' => 500, 'price' => 22000]);
-        ProductSize::create(['product_id' => 2, 'size' => 'Large', 'volume' => 1000, 'price' => 44000]);
+        foreach ($sizes as $slug => $rows) {
+            $product = Product::where('slug', $slug)->firstOrFail();
 
-        // Jemi (product_id 3)
-        ProductSize::create(['product_id' => 3, 'size' => 'Large', 'volume' => 1000, 'price' => 60000]);
+            foreach ($rows as $row) {
+                $product->sizes()->create($row);
+            }
+        }
     }
 }

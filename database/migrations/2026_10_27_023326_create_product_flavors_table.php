@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('product_flavors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id');
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->timestamps();
         });

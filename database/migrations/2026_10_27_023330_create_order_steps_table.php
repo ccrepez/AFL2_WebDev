@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('order_steps', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('step_number');
             $table->string('title');
             $table->string('description');
             $table->timestamps();

@@ -12,11 +12,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('tagline');
-            $table->text('description');
+            $table->text('intro');
+            $table->text('story');
             $table->string('owner_name');
-            $table->string('whatsapp');
-            $table->string('whatsapp_link');
+            $table->string('whatsapp');          
+            $table->string('whatsapp_display');  
             $table->string('instagram');
+            $table->string('address')->nullable();
+            $table->string('opening_hours')->nullable();
+            $table->text('maps_embed')->nullable();
             $table->timestamps();
         });
     }
