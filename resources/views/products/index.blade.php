@@ -1,18 +1,19 @@
 @extends('layouts.app')
-
-@section('title', 'Produk')
+@section('title', 'Menu')
 
 @section('content')
-    <h1>Produk</h1>
-
-    @foreach ($products as $product)
-        <div class="product">
-            <img src="/{{ $product->image }}" alt="{{ $product->name }}">
-            <div>
-                <h2>{{ $product->name }}</h2>
-                <p>{{ $product->tagline }}</p>
-                <a href="/produk/{{ $product->slug }}">Lihat detail</a>
-            </div>
+    <section class="page-head">
+        <div class="wrap">
+            <h1>Menu minuman</h1>
+            <p class="lead">Semua dibuat sendiri dan dikemas dalam botol. Pilih ukuran sesuai kebutuhan.</p>
         </div>
-    @endforeach
+    </section>
+
+    <section class="section section--tight">
+        <div class="wrap">
+            @include('partials.menu-board', ['products' => $products, 'photos' => true])
+        </div>
+    </section>
+
+    @include('partials.order-band')
 @endsection

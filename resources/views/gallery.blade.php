@@ -1,16 +1,28 @@
 @extends('layouts.app')
-
 @section('title', 'Galeri')
 
 @section('content')
-    <h1>Galeri</h1>
+    <section class="page-head">
+        <div class="wrap">
+            <h1>Galeri</h1>
+            <p class="lead">Foto produk dan menu {{ $profile->name }}.</p>
+        </div>
+    </section>
 
-    <div class="gallery">
-        @foreach ($galleries as $gallery)
-            <div class="gallery-item">
-                <img src="/{{ $gallery->image }}" alt="{{ $gallery->title }}">
-                <p>{{ $gallery->title }}</p>
-            </div>
-        @endforeach
-    </div>
+    <section class="section section--tight">
+        <div class="wrap">
+            @if ($galleries->isEmpty())
+                <p>Belum ada foto.</p>
+            @else
+                <div class="gallery">
+                    @foreach ($galleries as $photo)
+                        <figure>
+                            <img src="{{ asset($photo->image) }}" alt="{{ $photo->title }}" loading="lazy">
+                            <figcaption>{{ $photo->title }}</figcaption>
+                        </figure>
+                    @endforeach
+                </div>
+            @endif
+        </div>
+    </section>
 @endsection

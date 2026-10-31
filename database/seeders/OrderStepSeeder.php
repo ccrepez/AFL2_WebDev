@@ -12,7 +12,7 @@ class OrderStepSeeder extends Seeder
         $steps = [
             ['title' => 'Pilih minuman', 'description' => 'Tentukan produk, ukuran, dan rasa dari menu.'],
             ['title' => 'Kirim pesan WhatsApp', 'description' => 'Sebutkan pesanan dan jumlah botol yang diinginkan.'],
-            ['title' => 'Tunggu konfirmasi', 'description' => 'Dwija akan membalas dengan total harga dan waktu pesanan siap.'],
+            ['title' => 'Tunggu konfirmasi', 'description' => 'Divija akan membalas dengan total harga dan waktu pesanan siap.'],
         ];
 
         foreach ($steps as $i => $step) {
