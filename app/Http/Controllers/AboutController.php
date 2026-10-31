@@ -3,18 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advantage;
-use App\Models\BusinessProfile;
+use App\Models\Product;
 
 class AboutController extends Controller
 {
     public function index()
     {
-        $profile = BusinessProfile::first();
-        $advantages = Advantage::all();
+        $advantages = Advantage::orderBy('sort_order')->get();
+        $products = Product::ordered()->get();
 
-        return view('about', [
-            'profile' => $profile,
-            'advantages' => $advantages,
-        ]);
+        return view('about', compact('advantages', 'products'));
     }
 }

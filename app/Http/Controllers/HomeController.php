@@ -3,21 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advantage;
-use App\Models\BusinessProfile;
+use App\Models\Gallery;
 use App\Models\Product;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $profile = BusinessProfile::first();
-        $products = Product::all();
-        $advantages = Advantage::all();
+        $products = Product::with(['sizes', 'flavors'])->where('is_featured', true)->ordered()->get();
+        $advantages = Advantage::orderBy('sort_order')->get();
+        $galleries = Gallery::latest()->take(4)->get();
 
-        return view('home', [
-            'profile' => $profile,
-            'products' => $products,
-            'advantages' => $advantages,
-        ]);
+        return view('home', compact('products', 'advantages', 'galleries'));
     }
 }

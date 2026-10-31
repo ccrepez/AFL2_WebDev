@@ -2,32 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BusinessProfile;
 use App\Models\Product;
 
 class ProductController extends Controller
 {
-    // Halaman daftar semua produk
     public function index()
     {
-        $profile = BusinessProfile::first();
-        $products = Product::all();
+        $products = Product::with(['sizes', 'flavors'])->ordered()->get();
 
-        return view('products.index', [
-            'profile' => $profile,
-            'products' => $products,
-        ]);
+        return view('products.index', compact('products'));
     }
 
-    // Halaman detail 1 produk, dicari berdasarkan slug di URL
-    public function show($slug)
+    public function show(Product $product)
     {
-        $profile = BusinessProfile::first();
-        $product = Product::where('slug', $slug)->first();
+        $product->load(['sizes', 'flavors', 'galleries']);
 
-        return view('products.show', [
-            'profile' => $profile,
-            'product' => $product,
-        ]);
+        $others = Product::with('sizes')
+            ->where('id', '!=', $product->id)
+            ->ordered()
+            ->get();
+
+        return view('products.show', compact('product', 'others'));
     }
 }
