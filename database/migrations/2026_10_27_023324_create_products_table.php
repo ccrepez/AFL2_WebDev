@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('ingredients')->nullable();
             $table->string('storage_info')->nullable();
             $table->string('image');
-            $table->string('accent')->default('cocoa'); 
+            $table->string('accent')->default('cocoa');
             $table->boolean('is_featured')->default(true);
             $table->unsignedInteger('sort_order')->default(0);
             $table->timestamps();

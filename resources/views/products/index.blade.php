@@ -14,6 +14,4 @@
             @include('partials.menu-board', ['products' => $products, 'photos' => true])
         </div>
     </section>
-
-    @include('partials.order-band')
 @endsection

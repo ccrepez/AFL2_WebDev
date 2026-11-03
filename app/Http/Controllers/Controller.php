@@ -17,7 +17,6 @@ abstract class Controller
             'whatsappUrl' => $this->whatsappUrl(),
             'instagramUrl' => 'https://instagram.com/' . $profile['instagram'],
             'orderUrl' => $this->whatsappUrl($ui['order_message']),
-            'year' => date('Y'),
         ]);
     }
 

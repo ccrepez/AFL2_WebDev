@@ -106,7 +106,7 @@ a:focus-visible,
 }
 .text-link--back { display: inline-block; margin-bottom: 1rem; font-size: 0.95rem; }
 
-.site-header { border-bottom: 1px solid var(--line); background: var(--milk); }
+.site-header { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid var(--line); background: var(--milk); }
 .site-header__inner {
     display: flex;
     align-items: center;
@@ -122,7 +122,7 @@ a:focus-visible,
 }
 .wordmark--light { color: var(--milk); margin: 0; }
 .brand-logo { display: block; flex: none; line-height: 0; }
-.brand-logo img { height: 60px; width: auto; max-width: 160px; object-fit: contain; border-radius: 8px; }
+.brand-logo img { height: 52px; width: auto; }
 .site-nav { display: flex; gap: 22px; margin-left: auto; }
 .site-nav a {
     text-decoration: none;
@@ -152,9 +152,8 @@ a:focus-visible,
     margin: 0;
     overflow: hidden;
     border-radius: 999px 999px 20px 20px;
-    background: var(--oat);
 }
-.arch img { width: 100%; height: 100%; object-fit: contain; }
+.arch img { width: 100%; height: auto; }
 
 .hero { padding: clamp(24px, 4vw, 56px) 0 clamp(32px, 5vw, 64px); }
 .hero__inner {
@@ -166,7 +165,6 @@ a:focus-visible,
 .hero h1 { margin: 0.3rem 0 0.9rem; max-width: 13em; }
 .hero .lead { max-width: 42em; }
 
-/* Rak foto produk: tiap botol tampil utuh (contain), tinggi berselang-seling */
 .shelf {
     list-style: none;
     margin: 0;
@@ -182,15 +180,10 @@ a:focus-visible,
 .shelf__item:nth-child(2) { margin-bottom: 18px; }
 .shelf__item a {
     display: block;
-    /* Rasio frame mengikuti rasio asli foto (720x1280) agar tidak ada bidang kosong. */
-    aspect-ratio: 720 / 1280;
     border-radius: 999px 999px 18px 18px;
-    background: color-mix(in srgb, var(--accent) 14%, var(--oat));
     overflow: hidden;
 }
-/* Foto Aluna lebih ramping (591x1280), frame-nya menyesuaikan. */
-.shelf__item:nth-child(2) a { aspect-ratio: 591 / 1280; }
-.shelf__item img { width: 100%; height: 100%; object-fit: contain; }
+.shelf__item img { width: 100%; height: auto; }
 
 @media (max-width: 900px) {
     .hero__inner { grid-template-columns: 1fr; }
@@ -229,7 +222,6 @@ a:focus-visible,
     border-bottom: 1px solid var(--line);
 }
 .menu-row:has(.menu-row__photo) { grid-template-columns: 120px minmax(0, 1fr) auto; }
-.menu-row__photo { aspect-ratio: 3 / 4.4; }
 .menu-row__name h3 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 800; letter-spacing: -0.015em; }
 .menu-row__name h3 a { text-decoration: none; }
 .menu-row__name h3 a:hover { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 6px; }
@@ -279,10 +271,10 @@ a:focus-visible,
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
+    align-items: start;
 }
-.photo-strip img { width: 100%; aspect-ratio: 4 / 5; object-fit: contain; border-radius: 14px; background: var(--oat); }
+.photo-strip img { width: 100%; height: auto; border-radius: 14px; }
 @media (max-width: 640px) { .photo-strip { grid-template-columns: repeat(2, 1fr); } }
-
 
 .order-band { background: var(--cocoa); color: var(--milk); padding: clamp(40px, 6vw, 64px) 0; }
 .order-band__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px; }
@@ -364,14 +356,15 @@ a:focus-visible,
 
 .map iframe { width: 100%; height: 360px; border: 0; border-radius: 20px; }
 
-.site-footer { background: #3A2418; color: var(--milk); padding: 48px 0 24px; }
-.site-footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
+.site-footer { background: #3A2418; color: var(--milk); padding: 40px 0; }
+.site-footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+.footer-brand { display: flex; align-items: center; gap: 16px; }
+.footer-logo { display: block; line-height: 0; padding: 8px 12px; background: var(--milk); border-radius: 12px; }
+.footer-logo img { height: 56px; width: auto; }
 .footer-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .footer-links a { text-decoration: none; }
 .footer-links a:hover { text-decoration: underline; text-decoration-color: var(--mustard); }
-.site-footer__copy { margin: 32px auto 0; font-size: 0.9rem; color: #C9B6A2; }
 
-/* Gallery: poster on top, uniform cropped grid below */
 .poster { margin: 0; text-align: center; }
 .poster img {
     width: 100%;
@@ -399,25 +392,20 @@ a:focus-visible,
 }
 .gallery figcaption { margin-top: 6px; font-size: 0.95rem; color: var(--cocoa-soft); }
 
-/* Product detail: CSS-only carousel (radio inputs) */
 .carousel { position: relative; max-width: 460px; }
 .carousel__radio { position: absolute; opacity: 0; pointer-events: none; }
 .carousel__stage {
     position: relative;
-    aspect-ratio: 3 / 4;
     border-bottom: 10px solid var(--accent);
     border-radius: 20px 20px 6px 6px;
-    background: var(--oat);
     overflow: hidden;
 }
 .carousel__slide {
-    position: absolute;
-    inset: 0;
     display: none;
     flex-direction: column;
     margin: 0;
 }
-.carousel__slide img { flex: 1; min-height: 0; width: 100%; object-fit: contain; }
+.carousel__slide img { width: 100%; height: auto; }
 .carousel__slide figcaption { padding: 8px 56px 12px; text-align: center; font-weight: 600; font-size: 0.95rem; }
 .carousel__arrow {
     position: absolute;
@@ -437,17 +425,15 @@ a:focus-visible,
 }
 .carousel__arrow--prev { left: 8px; }
 .carousel__arrow--next { right: 8px; }
-.carousel__thumbs { display: flex; gap: 8px; margin-top: 12px; overflow-x: auto; padding-bottom: 6px; }
+.carousel__thumbs { display: flex; align-items: flex-start; gap: 8px; margin-top: 12px; overflow-x: auto; padding-bottom: 6px; }
 .carousel__thumbs label {
     flex: 0 0 64px;
-    height: 80px;
     border: 2px solid transparent;
     border-radius: 8px;
-    background: var(--oat);
     cursor: pointer;
     overflow: hidden;
 }
-.carousel__thumbs img { width: 100%; height: 100%; object-fit: contain; }
+.carousel__thumbs img { width: 100%; height: auto; }
 .carousel__radio:focus-visible ~ .carousel__thumbs { outline: 3px solid var(--mustard); }
 .carousel:has(#photo-1:checked) .carousel__slide:nth-child(1) { display: flex; }
 .carousel:has(#photo-1:checked) .carousel__thumbs label:nth-child(1) { border-color: var(--cocoa); }

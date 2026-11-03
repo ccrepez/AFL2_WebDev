@@ -1,9 +1,8 @@
 <?php
 
 return [
-    'logo' => 'images/brand/logo-divija.jpeg',
+    'logo' => 'images/brand/logo-divija.png',
 
-    // Profil usaha: teks statis, tidak disimpan di database.
     'profile' => [
         'name' => 'Divija',
         'tagline' => 'Homemade for you',
@@ -23,9 +22,9 @@ return [
     'nav' => [
         ['label' => 'Beranda', 'route' => 'home', 'active' => 'home'],
         ['label' => 'Menu', 'route' => 'products.index', 'active' => 'products.*'],
-        ['label' => 'Tentang Kami', 'route' => 'about', 'active' => 'about'],
         ['label' => 'Galeri', 'route' => 'gallery', 'active' => 'gallery'],
         ['label' => 'Cara Pemesanan', 'route' => 'contact', 'active' => 'contact'],
+        ['label' => 'Tentang Kami', 'route' => 'about', 'active' => 'about'],
     ],
 
     'ui' => [
@@ -38,7 +37,6 @@ return [
         'order_message_product' => 'Halo Divija, saya ingin memesan :product.',
         'order_band_title' => 'Siap memesan?',
         'order_band_text' => 'Pemesanan dilayani melalui WhatsApp di nomor',
-        'footer_rights' => 'Seluruh hak cipta dilindungi.',
         'whatsapp' => 'WhatsApp',
         'instagram' => 'Instagram',
         'size_unit' => 'ml',

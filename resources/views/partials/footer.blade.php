@@ -1,7 +1,9 @@
 <footer class="site-footer">
     <div class="wrap site-footer__inner">
-        <div>
-            <p class="wordmark wordmark--light">{{ $profile['name'] }}</p>
+        <div class="footer-brand">
+            <a href="{{ route('home') }}" class="footer-logo" aria-label="{{ $ui['logo_alt'] }}">
+                <img src="{{ asset($logo) }}" alt="{{ $profile['name'] }}">
+            </a>
             <p class="script script--light">{{ $profile['tagline'] }}</p>
         </div>
 
@@ -13,5 +15,4 @@
             @endif
         </ul>
     </div>
-    <p class="wrap site-footer__copy">&copy; {{ $year }} {{ $profile['name'] }}. {{ $ui['footer_rights'] }}</p>
 </footer>
