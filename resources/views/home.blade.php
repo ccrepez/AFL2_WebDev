@@ -58,12 +58,10 @@
                 </div>
                 <div class="photo-strip">
                     @foreach ($galleries as $photo)
-                        <img src="{{ asset($photo->image) }}" alt="{{ $photo->title }}" loading="lazy">
+                        <img src="{{ asset($photo->image) }}" alt="{{ $photo->title }}" loading="lazy" @if ($photo->focus) style="object-position: {{ $photo->focus }}" @endif>
                     @endforeach
                 </div>
             </div>
         </section>
     @endif
-
-    @include('partials.order-band')
 @endsection

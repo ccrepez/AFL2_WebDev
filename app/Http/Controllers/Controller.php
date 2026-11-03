@@ -14,6 +14,7 @@ abstract class Controller
             'ui' => $ui,
             'nav' => config('divija.nav'),
             'logo' => config('divija.logo'),
+            'logoLight' => config('divija.logo_light'),
             'whatsappUrl' => $this->whatsappUrl(),
             'instagramUrl' => 'https://instagram.com/' . $profile['instagram'],
             'orderUrl' => $this->whatsappUrl($ui['order_message']),

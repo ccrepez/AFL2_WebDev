@@ -2,7 +2,7 @@
     <div class="wrap site-footer__inner">
         <div class="footer-brand">
             <a href="{{ route('home') }}" class="footer-logo" aria-label="{{ $ui['logo_alt'] }}">
-                <img src="{{ asset($logo) }}" alt="{{ $profile['name'] }}">
+                <img src="{{ asset($logoLight) }}" alt="{{ $profile['name'] }}">
             </a>
             <p class="script script--light">{{ $profile['tagline'] }}</p>
         </div>

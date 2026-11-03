@@ -41,6 +41,4 @@
             </ul>
         </div>
     </section>
-
-    @include('partials.order-band')
 @endsection

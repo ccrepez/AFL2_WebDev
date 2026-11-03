@@ -2,6 +2,7 @@
 
 return [
     'logo' => 'images/brand/logo-divija.png',
+    'logo_light' => 'images/brand/logo-divija-light.png',
 
     'profile' => [
         'name' => 'Divija',
