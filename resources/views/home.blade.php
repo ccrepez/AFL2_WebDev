@@ -4,30 +4,32 @@
     <section class="hero">
         <div class="wrap hero__inner">
             <div class="hero__text">
-                <p class="script script--large">{{ $profile->tagline }}</p>
-                <h1>Minuman botol dari {{ $profile->owner_name }}</h1>
-                <p class="lead">{{ $profile->intro }}</p>
+                <p class="script script--large">{{ $profile['tagline'] }}</p>
+                <h1>{{ $page['headline'] }}</h1>
+                <p class="lead">{{ $profile['intro'] }}</p>
                 <div class="actions">
-                    <a href="#menu" class="btn">Lihat menu</a>
-                    <a href="{{ $profile->whatsappUrl() }}" class="btn btn--ghost" target="_blank" rel="noopener">Pesan lewat WhatsApp</a>
+                    <a href="#{{ $page['menu_anchor'] }}" class="btn">{{ $page['cta_menu'] }}</a>
+                    <a href="{{ $orderUrl }}" class="btn btn--ghost" target="_blank" rel="noopener">{{ $ui['order_whatsapp'] }}</a>
                 </div>
             </div>
 
-            <div class="shelf" aria-hidden="true">
+            <ul class="shelf">
                 @foreach ($products as $product)
-                    <figure class="shelf__item arch tone-{{ $product->accent }}">
-                        <img src="{{ asset($product->image) }}" alt="">
-                    </figure>
+                    <li class="shelf__item tone-{{ $product->accent }}">
+                        <a href="{{ route('products.show', $product) }}" aria-label="{{ $product->name }}">
+                            <img src="{{ asset($product->image) }}" alt="{{ $ui['photo_alt_prefix'] }} {{ $product->name }}">
+                        </a>
+                    </li>
                 @endforeach
-            </div>
+            </ul>
         </div>
     </section>
 
-    <section id="menu" class="section">
+    <section id="{{ $page['menu_anchor'] }}" class="section">
         <div class="wrap">
             <div class="section-head">
-                <h2>Menu dan harga</h2>
-                <a href="{{ route('products.index') }}" class="text-link">Detail tiap minuman</a>
+                <h2>{{ $page['menu_title'] }}</h2>
+                <a href="{{ route('products.index') }}" class="text-link">{{ $page['menu_link'] }}</a>
             </div>
             @include('partials.menu-board', ['products' => $products, 'photos' => false])
         </div>
@@ -35,7 +37,7 @@
 
     <section class="section section--oat">
         <div class="wrap">
-            <h2>Yang dijaga di setiap botol</h2>
+            <h2>{{ $page['values_title'] }}</h2>
             <ul class="promise-list">
                 @foreach ($advantages as $advantage)
                     <li>
@@ -51,8 +53,8 @@
         <section class="section">
             <div class="wrap">
                 <div class="section-head">
-                    <h2>Galeri</h2>
-                    <a href="{{ route('gallery') }}" class="text-link">Lihat semua foto</a>
+                    <h2>{{ $page['gallery_title'] }}</h2>
+                    <a href="{{ route('gallery') }}" class="text-link">{{ $page['gallery_link'] }}</a>
                 </div>
                 <div class="photo-strip">
                     @foreach ($galleries as $photo)

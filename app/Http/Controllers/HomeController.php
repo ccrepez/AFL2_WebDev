@@ -10,10 +10,11 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $page = config('divija.pages.home');
         $products = Product::with(['sizes', 'flavors'])->where('is_featured', true)->ordered()->get();
         $advantages = Advantage::orderBy('sort_order')->get();
-        $galleries = Gallery::latest()->take(4)->get();
+        $galleries = Gallery::showcase()->orderBy('id')->take(4)->get();
 
-        return view('home', compact('products', 'advantages', 'galleries'));
+        return $this->render('home', compact('page', 'products', 'advantages', 'galleries'));
     }
 }

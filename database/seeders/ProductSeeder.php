@@ -13,9 +13,9 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Soya Milk',
                 'slug' => 'soya-milk',
-                'tagline' => 'Sari kacang dele',
-                'description' => 'Susu kedelai buatan rumah dalam botol. Ada tiga pilihan rasa: original, strawberry, dan chocolate.',
-                'image' => 'images/soya-milk-three-sizes-with-soybeans.jpeg',
+                'tagline' => 'Susu kedelai pilihan',
+                'description' => 'Susu kedelai olahan sendiri dalam kemasan botol. Tersedia dalam tiga pilihan rasa: original, strawberry, dan chocolate.',
+                'image' => 'images/products/soya-milk/three-sizes-with-soybeans.jpeg',
                 'accent' => 'mustard',
                 'sort_order' => 1,
             ],
@@ -23,8 +23,8 @@ class ProductSeeder extends Seeder
                 'name' => 'Aluna',
                 'slug' => 'aluna',
                 'tagline' => 'Sari kacang hijau + kacang almond',
-                'description' => 'Perpaduan sari kacang hijau dan kacang almond. Tanpa pengawet dan memakai 100% gula asli.',
-                'image' => 'images/products/aluna.jpg',
+                'description' => 'Perpaduan sari kacang hijau dan kacang almond yang bergizi. Tanpa pengawet dan menggunakan 100% gula asli.',
+                'image' => 'images/products/aluna/aluna-bottle.jpeg',
                 'accent' => 'olive',
                 'sort_order' => 2,
             ],
@@ -32,15 +32,15 @@ class ProductSeeder extends Seeder
                 'name' => 'Jemi',
                 'slug' => 'jemi',
                 'tagline' => 'Jelly milk',
-                'description' => 'Susu dengan potongan jelly di dalamnya, dikemas dalam botol satu liter.',
-                'image' => 'images/jelly-milk-three-bottles-ultra-milk.jpeg',
+                'description' => 'Susu segar dengan potongan jelly lembut, dikemas dalam botol satu liter.',
+                'image' => 'images/products/jemi/jemi-three-bottles-ultra-milk.jpeg',
                 'accent' => 'cocoa',
                 'sort_order' => 3,
             ],
         ];
 
         foreach ($products as $product) {
-            Product::create($product);
+            Product::updateOrCreate(['slug' => $product['slug']], $product);
         }
     }
 }

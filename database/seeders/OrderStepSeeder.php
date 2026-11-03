@@ -10,13 +10,13 @@ class OrderStepSeeder extends Seeder
     public function run(): void
     {
         $steps = [
-            ['title' => 'Pilih minuman', 'description' => 'Tentukan produk, ukuran, dan rasa dari menu.'],
-            ['title' => 'Kirim pesan WhatsApp', 'description' => 'Sebutkan pesanan dan jumlah botol yang diinginkan.'],
-            ['title' => 'Tunggu konfirmasi', 'description' => 'Divija akan membalas dengan total harga dan waktu pesanan siap.'],
+            ['title' => 'Pilih produk', 'description' => 'Tentukan produk, ukuran, dan rasa yang Anda inginkan dari daftar menu.'],
+            ['title' => 'Kirim pesanan via WhatsApp', 'description' => 'Sampaikan produk dan jumlah botol yang ingin dipesan.'],
+            ['title' => 'Terima konfirmasi', 'description' => 'Tim Divija akan mengonfirmasi total biaya dan estimasi waktu pesanan siap.'],
         ];
 
         foreach ($steps as $i => $step) {
-            OrderStep::create($step + ['step_number' => $i + 1]);
+            OrderStep::updateOrCreate(['step_number' => $i + 1], $step);
         }
     }
 }

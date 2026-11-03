@@ -25,7 +25,7 @@ class Product extends Model
 
     public function galleries(): HasMany
     {
-        return $this->hasMany(Gallery::class);
+        return $this->hasMany(Gallery::class)->orderBy('id');
     }
 
     public function getStartingPriceAttribute(): ?string

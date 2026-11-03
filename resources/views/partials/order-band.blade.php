@@ -1,9 +1,9 @@
 <section class="order-band">
     <div class="wrap order-band__inner">
         <div>
-            <h2>Mau pesan?</h2>
-            <p>Kirim pesanan lewat WhatsApp ke {{ $profile->whatsapp_display }}.</p>
+            <h2>{{ $ui['order_band_title'] }}</h2>
+            <p>{{ $ui['order_band_text'] }} {{ $profile['whatsapp_display'] }}.</p>
         </div>
-        <a href="{{ $profile->whatsappUrl('Halo Divija, saya mau pesan') }}" class="btn btn--mustard" target="_blank" rel="noopener">Chat WhatsApp</a>
+        <a href="{{ $orderUrl }}" class="btn btn--mustard" target="_blank" rel="noopener">{{ $ui['chat_whatsapp'] }}</a>
     </div>
 </section>

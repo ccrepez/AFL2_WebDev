@@ -9,9 +9,10 @@ class AboutController extends Controller
 {
     public function index()
     {
+        $page = config('divija.pages.about');
         $advantages = Advantage::orderBy('sort_order')->get();
         $products = Product::ordered()->get();
 
-        return view('about', compact('advantages', 'products'));
+        return $this->render('about', compact('page', 'advantages', 'products'));
     }
 }

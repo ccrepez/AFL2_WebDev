@@ -29,7 +29,7 @@ class ProductSizeSeeder extends Seeder
             $product = Product::where('slug', $slug)->firstOrFail();
 
             foreach ($rows as $row) {
-                $product->sizes()->create($row);
+                $product->sizes()->updateOrCreate(['volume_ml' => $row['volume_ml']], $row);
             }
         }
     }

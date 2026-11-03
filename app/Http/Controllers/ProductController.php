@@ -8,13 +8,15 @@ class ProductController extends Controller
 {
     public function index()
     {
+        $page = config('divija.pages.products');
         $products = Product::with(['sizes', 'flavors'])->ordered()->get();
 
-        return view('products.index', compact('products'));
+        return $this->render('products.index', compact('page', 'products'));
     }
 
     public function show(Product $product)
     {
+        $page = config('divija.pages.product');
         $product->load(['sizes', 'flavors', 'galleries']);
 
         $others = Product::with('sizes')
@@ -22,6 +24,10 @@ class ProductController extends Controller
             ->ordered()
             ->get();
 
-        return view('products.show', compact('product', 'others'));
+        $productOrderUrl = $this->whatsappUrl(
+            str_replace(':product', $product->name, config('divija.ui.order_message_product'))
+        );
+
+        return $this->render('products.show', compact('page', 'product', 'others', 'productOrderUrl'));
     }
 }

@@ -12,7 +12,7 @@ class ProductFlavorSeeder extends Seeder
         $soya = Product::where('slug', 'soya-milk')->firstOrFail();
 
         foreach (['Original', 'Strawberry', 'Chocolate'] as $flavor) {
-            $soya->flavors()->create(['name' => $flavor]);
+            $soya->flavors()->updateOrCreate(['name' => $flavor]);
         }
     }
 }
