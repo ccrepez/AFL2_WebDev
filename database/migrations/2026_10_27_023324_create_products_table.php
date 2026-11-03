@@ -14,8 +14,6 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('tagline');
             $table->text('description');
-            $table->text('ingredients')->nullable();
-            $table->string('storage_info')->nullable();
             $table->string('image');
             $table->string('accent')->default('cocoa');
             $table->boolean('is_featured')->default(true);

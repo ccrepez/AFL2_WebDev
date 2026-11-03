@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title', $page['title'])
+@section('title', 'Menu Minuman | Divija')
 
 @section('content')
     <section class="page-head">
         <div class="wrap">
-            <h1>{{ $page['title'] }}</h1>
-            <p class="lead">{{ $page['lead'] }}</p>
+            <h1>Menu Minuman</h1>
+            <p class="lead">Seluruh produk diolah sendiri dan dikemas dalam botol. Tersedia dalam beberapa ukuran sesuai kebutuhan Anda.</p>
         </div>
     </section>
 

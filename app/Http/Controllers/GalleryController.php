@@ -8,10 +8,15 @@ class GalleryController extends Controller
 {
     public function index()
     {
-        $page = config('divija.pages.gallery');
-        $poster = Gallery::poster()->first();
-        $galleries = Gallery::showcase()->orderBy('id')->get();
+        $poster = Gallery::where('category', 'poster')->first();
 
-        return $this->render('gallery', compact('page', 'poster', 'galleries'));
+        $galleries = Gallery::where('category', 'produk')
+            ->orderBy('id')
+            ->get();
+
+        return view('gallery', [
+            'poster' => $poster,
+            'galleries' => $galleries,
+        ]);
     }
 }

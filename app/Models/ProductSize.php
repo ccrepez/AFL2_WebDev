@@ -3,23 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProductSize extends Model
 {
     protected $guarded = [];
 
-    public function product(): BelongsTo
+    public function product()
     {
         return $this->belongsTo(Product::class);
     }
 
-    public function getFormattedPriceAttribute(): string
+    public function formattedPrice()
     {
         return 'Rp' . number_format($this->price, 0, ',', '.');
     }
 
-    public function getShortPriceAttribute(): string
+    public function shortPrice()
     {
         return ($this->price / 1000) . 'K';
     }

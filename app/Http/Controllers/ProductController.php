@@ -8,26 +8,29 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $page = config('divija.pages.products');
-        $products = Product::with(['sizes', 'flavors'])->ordered()->get();
+        $products = Product::with(['sizes', 'flavors'])
+            ->orderBy('sort_order')
+            ->get();
 
-        return $this->render('products.index', compact('page', 'products'));
+        return view('products.index', [
+            'products' => $products,
+        ]);
     }
 
-    public function show(Product $product)
+    public function show($slug)
     {
-        $page = config('divija.pages.product');
-        $product->load(['sizes', 'flavors', 'galleries']);
+        $product = Product::with(['sizes', 'flavors', 'galleries'])
+            ->where('slug', $slug)
+            ->firstOrFail();
 
         $others = Product::with('sizes')
             ->where('id', '!=', $product->id)
-            ->ordered()
+            ->orderBy('sort_order')
             ->get();
 
-        $productOrderUrl = $this->whatsappUrl(
-            str_replace(':product', $product->name, config('divija.ui.order_message_product'))
-        );
-
-        return $this->render('products.show', compact('page', 'product', 'others', 'productOrderUrl'));
+        return view('products.show', [
+            'product' => $product,
+            'others' => $others,
+        ]);
     }
 }

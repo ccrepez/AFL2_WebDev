@@ -3,40 +3,30 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
     protected $guarded = [];
 
-    protected $casts = [
-        'is_featured' => 'boolean',
-    ];
-
-    public function sizes(): HasMany
+    public function sizes()
     {
         return $this->hasMany(ProductSize::class)->orderBy('volume_ml');
     }
 
-    public function flavors(): HasMany
+    public function flavors()
     {
         return $this->hasMany(ProductFlavor::class);
     }
 
-    public function galleries(): HasMany
+    public function galleries()
     {
-        return $this->hasMany(Gallery::class)->orderBy('id');
+        return $this->hasMany(Gallery::class);
     }
 
-    public function getStartingPriceAttribute(): ?string
+    public function startingPrice()
     {
         $min = $this->sizes->min('price');
 
-        return $min ? 'Rp' . number_format($min, 0, ',', '.') : null;
-    }
-
-    public function scopeOrdered($query)
-    {
-        return $query->orderBy('sort_order');
+        return 'Rp' . number_format($min, 0, ',', '.');
     }
 }
