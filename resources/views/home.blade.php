@@ -5,7 +5,7 @@
         <div class="wrap hero__inner">
             <div class="hero__text">
                 <p class="script script--large">{{ $profile->tagline }}</p>
-                <h1>Minuman botol dari dapur {{ $profile->owner_name }}</h1>
+                <h1>Minuman botol dari {{ $profile->owner_name }}</h1>
                 <p class="lead">{{ $profile->intro }}</p>
                 <div class="actions">
                     <a href="#menu" class="btn">Lihat menu</a>
