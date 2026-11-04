@@ -10,10 +10,10 @@ return new class extends Migration
     {
         Schema::create('product_sizes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('product_id')->constrained();
             $table->string('label');
-            $table->unsignedInteger('volume_ml');
-            $table->unsignedInteger('price');
+            $table->integer('volume_ml');
+            $table->integer('price');
             $table->timestamps();
         });
     }

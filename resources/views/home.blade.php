@@ -67,7 +67,7 @@
             </div>
             <div class="photo-strip">
                 @foreach ($galleries as $photo)
-                    <img src="{{ asset($photo->image) }}" alt="{{ $photo->title }}" loading="lazy" style="object-position: {{ $photo->focus }}">
+                    <img src="{{ asset($photo->image) }}" alt="{{ $photo->title }}" loading="lazy">
                 @endforeach
             </div>
         </div>

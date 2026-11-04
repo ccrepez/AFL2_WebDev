@@ -34,16 +34,15 @@ class GallerySeeder extends Seeder
 
         Gallery::create(['product_id' => $aluna->id, 'title' => 'Aluna sari kacang hijau dan almond', 'category' => 'produk', 'image' => 'images/products/aluna/aluna-bottle.jpeg']);
 
-        Gallery::create(['product_id' => $jemi->id, 'title' => 'Jemi Jelly Milk 1000 ml dengan pembanding ukuran', 'category' => 'produk', 'image' => 'images/products/jemi/jemi-1000ml-with-ultra-milk.jpeg', 'focus' => '85% 30%']);
+        Gallery::create(['product_id' => $jemi->id, 'title' => 'Jemi Jelly Milk 1000 ml dengan pembanding ukuran', 'category' => 'produk', 'image' => 'images/products/jemi/jemi-1000ml-with-ultra-milk.jpeg']);
         Gallery::create(['product_id' => $jemi->id, 'title' => 'Jemi Jelly Milk tiga botol', 'category' => 'produk', 'image' => 'images/products/jemi/jemi-three-bottles-ultra-milk.jpeg']);
-        Gallery::create(['product_id' => $jemi->id, 'title' => 'Jemi Jelly Milk dalam tas kado Hari Raya', 'category' => 'produk', 'image' => 'images/products/jemi/jemi-hari-raya-gift-bag.jpeg', 'focus' => '50% 40%']);
+        Gallery::create(['product_id' => $jemi->id, 'title' => 'Jemi Jelly Milk dalam tas kado Hari Raya', 'category' => 'produk', 'image' => 'images/products/jemi/jemi-hari-raya-gift-bag.jpeg']);
 
         Gallery::create([
             'product_id' => null,
             'title' => 'Seluruh varian Jelly Milk dan Soya Milk',
             'category' => 'produk',
             'image' => 'images/products/collection/full-lineup.jpeg',
-            'focus' => '20% 50%',
         ]);
     }
 }

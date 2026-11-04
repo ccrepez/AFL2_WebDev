@@ -48,7 +48,7 @@
                 <div class="gallery">
                     @foreach ($product->galleries as $photo)
                         <figure>
-                            <img src="{{ asset($photo->image) }}" alt="{{ $photo->title }}" loading="lazy" style="object-position: {{ $photo->focus }}">
+                            <img src="{{ asset($photo->image) }}" alt="{{ $photo->title }}" loading="lazy">
                             <figcaption>{{ $photo->title }}</figcaption>
                         </figure>
                     @endforeach

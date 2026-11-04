@@ -10,11 +10,10 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('product_id')->nullable()->constrained();
             $table->string('title');
             $table->string('category');
             $table->string('image');
-            $table->string('focus')->nullable();
             $table->timestamps();
         });
     }
