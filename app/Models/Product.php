@@ -27,6 +27,6 @@ class Product extends Model
     {
         $min = $this->sizes->min('price');
 
-        return 'Rp' . number_format($min, 0, ',', '.');
+        return 'Rp'.number_format($min, 0, ',', '.');
     }
 }

@@ -15,11 +15,11 @@ class ProductSize extends Model
 
     public function formattedPrice()
     {
-        return 'Rp' . number_format($this->price, 0, ',', '.');
+        return 'Rp'.number_format($this->price, 0, ',', '.');
     }
 
     public function shortPrice()
     {
-        return ($this->price / 1000) . 'K';
+        return ($this->price / 1000).'K';
     }
 }
