@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $guarded = [];
+    protected $fillable = ['name', 'slug', 'tagline', 'description', 'image', 'accent', 'sort_order'];
 
     public function sizes()
     {
