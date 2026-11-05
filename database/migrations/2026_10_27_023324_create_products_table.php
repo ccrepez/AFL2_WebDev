@@ -16,7 +16,6 @@ return new class extends Migration
             $table->text('description');
             $table->string('image');
             $table->string('accent')->default('cocoa');
-            $table->boolean('is_featured')->default(true);
             $table->integer('sort_order')->default(0);
             $table->timestamps();
         });

@@ -10,7 +10,6 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::with(['sizes', 'flavors'])
-            ->where('is_featured', true)
             ->orderBy('sort_order')
             ->get();
 
